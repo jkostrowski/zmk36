@@ -1,0 +1,5 @@
+config SHIELD_CRADIO36_LEFT
+	def_bool $(shields_list_contains,cradio36_left)
+
+config SHIELD_CRADIO36_RIGHT
+	def_bool $(shields_list_contains,cradio36_right)
