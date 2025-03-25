@@ -23,7 +23,7 @@
 		
        upper_layer {
 		bindings = <
-		&kp NUM_1  &kp NUM_2    &kp NUM_3    &kp NUM_4    &kp NUM_5				&kp NUM_6 &kp NUM_7 &kp NUM_8 &kp NUM_9 &kp NUM_0 
+		&bootloader  &kp NUM_2    &kp NUM_3    &kp NUM_4    &kp NUM_5				&kp NUM_6 &kp NUM_7 &kp NUM_8 &kp NUM_9 &kp NUM_0 
 		&kp TAB    &kp LC(S)    &kp DQT      &kp PIPE2     &kp HASH 				&kp MINUS &kp EQL  &kp LBKT &kp RBKT  &kp DEL 
 		&kp ESC    &bt BT_CLR &kp NON_US_BSLH &kp NON_US_HASH  &kp TILDE2 			&kp MINUS &kp GRAVE &kp LBKT &kp RBKT  &kp DEL 
 					&kp RSFT     &mo 1  &kp LGUI  					&kp RGUI &mo 2 &kp RSFT
@@ -32,8 +32,8 @@
 		
 	lower_layer {
 		bindings = <
-		&kp BANG  &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
-		&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
+		&bootloader &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
+		&kp HASH    &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
 		&kp LSFT    &kp KPLS &kp LBKT &kp RBKT   &kp BSLH    				&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
 					&kp RSFT  &mo 1 &kp LCTL  				&kp SPC  &mo 2 &kp RSFT
 		>;
