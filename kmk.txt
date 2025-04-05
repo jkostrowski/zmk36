@@ -1,0 +1,137 @@
+
+holdtap = HoldTap()
+holdtap.tap_time = 250
+holdtap.prefer_hold = False 
+keyboard.modules.append(holdtap)
+
+tapdance = TapDance()
+tapdance.tap_time = 250
+keyboard.modules.append(tapdance)
+
+mousekeys = MouseKeys(max_speed = 20, acc_interval = 20, move_step = 10)
+keyboard.modules.append(mousekeys)
+
+sticky_mod = StickyMod()
+keyboard.modules.append(sticky_mod)
+
+
+
+PIN = KC.MACRO( "201111" )
+CAD = KC.MACRO( Press(KC.LCTL), Press(KC.LALT), Tap(KC.DEL), Release(KC.LALT), Release(KC.LCTL) )
+
+#==================================
+
+combo_layers = { (1, 2): 3 }
+keyboard.modules.append(Layers(combo_layers))
+
+#L1 = KC.LT(1, KC.SK( KC.LCTL ))  
+#L2 = KC.LT(2, KC.SPC )
+#R1 = KC.LT(2, KC.ENT )   
+#R2 = KC.LT(1, KC.BSPC )	 
+
+SCTRL = KC.SK( KC.LCTL )
+
+L1 = KC.HT( SCTRL   , KC.MO(1))  
+L2 = KC.HT( KC.SPC  , KC.MO(2))
+R1 = KC.HT( KC.ENT  , KC.MO(2))   
+R2 = KC.HT( KC.BSPC , KC.MO(1))	 
+
+
+K = lambda x : KC.SK(x)
+C = lambda x : KC.LCTL(x)
+S = lambda x : KC.LSFT(x)
+D = lambda x : KC.LSFT(KC.LCTL(x))
+A = lambda x : KC.LALT(x)
+X = KC.X
+
+SMATAB1 = KC.SM(KC.LSFT(KC.TAB), KC.LALT)
+SMATAB2 = KC.SM(KC.TAB, KC.LALT)
+SFTZ    = KC.HT(KC.Z, KC.LSFT)
+SFTSLSH = KC.HT(KC.SLSH, KC.LSFT)
+SALT    = KC.SK(KC.LALT)  
+
+ALTQ    = KC.HT(KC.Q, KC.LALT)
+ALTP    = KC.HT(KC.P, KC.LALT)
+
+
+
+keyboard.keymap = [
+
+[ # base 
+    ALTQ,   KC.W,   KC.E,   KC.R,   KC.T,                   KC.Y,   KC.U,   KC.I,    KC.O,    ALTP, 
+    KC.A,   KC.S,   KC.D,   KC.F,   KC.G,                   KC.H,   KC.J,   KC.K,    KC.L,    KC.SCLN, 
+    SFTZ,   KC.X,   KC.C,   KC.V,   KC.B,                   KC.N,   KC.M,   KC.COMM, KC.DOT,  SFTSLSH,
+                            L1,     L2,                     R1,     R2,
+],
+
+[ # nav
+    X,     X,   KC.MB_LMB,   KC.MS_UP,  KC.MB_RMB,          SMATAB1,    KC.UP    , SMATAB2   , KC.HOME, KC.PGUP ,    
+    X,     X,   KC.MS_LT,    KC.MS_DN,  KC.MS_RT,           KC.LEFT,    KC.DOWN  , KC.RGHT   , KC.END , KC.PGDN , 
+    X,     X,   A(KC.A),     X,         A(KC.Q),            D(KC.TAB),  C(KC.K)  , C(KC.TAB ), X      , X       ,
+                             L1,        L2,                 R1,         C(KC.BSPC), 
+],
+
+[ # numbers
+    KC.F1,	 KC.F2,   KC.F3,	 KC.F4,	  KC.F5,            KC.F6,   KC.F7,	  KC.F8,	  KC.F9,   KC.F10,
+    KC.N1,	 KC.N2,	  KC.N3,	 KC.N4,	  KC.N5,            KC.N6,   KC.N7,	  KC.N8,	  KC.N9,   KC.N0,
+    KC.EXLM, KC.AT,	  KC.HASH,	 KC.DLR,  KC.PERC,          KC.CIRC, KC.AMPR, KC.PAST,    KC.PPLS, KC.PMNS,
+                                 L1,      L2,               R1,      R2, 
+],
+
+[ # symbol
+    X,          KC.LBRC,    KC.LPRN,    KC.LCBR,            KC.PIPE,    KC.BSLS , KC.RCBR   , KC.RPRN   , KC.RBRC   , X         ,
+    K(KC.LGUI), K(KC.LALT), K(KC.LSFT), K(KC.LCTL),         X,          X       , K(KC.RCTL), K(KC.RSFT), K(KC.RALT), K(KC.RGUI),
+    KC.PMNS,    KC.ASTR,    KC.EQL,     X,                  X,          X       , X         , X         , X         , X         ,    
+                            L1,         L2,                 R1,         R2, 
+], 
+
+]
+
+
+#[ # nav
+#    X,     X,   KC.MB_LMB,   KC.MS_UP,  KC.MB_RMB,          KC.PGUP,    SMATAB1,    KC.UP    , SMATAB2   , KC.PGDN  , 
+#    X,     X,   KC.MS_LT,    KC.MS_DN,  KC.MS_RT,           KC.HOME,    KC.LEFT,    KC.DOWN  , KC.RGHT   , KC.END   , 
+#    X,     X,   A(KC.A),     X,         A(KC.Q),            X,          D(KC.TAB),  C(KC.K)  , C(KC.TAB ), X        ,
+#                             L1,        L2,                 R1,         C(KC.BSPC), 
+#],
+
+
+
+
+combos.combos = [
+    Chord((KC.A, KC.S, KC.D), PIN),
+    Chord((KC.Z, KC.X, KC.C), CAD),
+
+    Chord((KC.Y, KC.H), KC.ESC),
+    Chord((KC.G, KC.H), KC.PSCR),
+    Chord((KC.X, KC.V), KC.ENT),
+
+    Chord((KC.U, KC.J), KC.PMNS),
+    Chord((KC.J, KC.M), KC.COLN),
+    
+    Chord((KC.T, KC.G), KC.TAB),
+    Chord((KC.G, KC.B), S(KC.TAB)), 
+
+    # Chord((KC.F, KC.V), KC.SK( KC.LCTL )),
+    # Chord((KC.D, KC.C), KC.SK( KC.LSFT )),
+    # Chord((KC.S, KC.X), KC.SK( KC.LALT )),
+    
+    # Chord((KC.H, KC.J), KC.BSPC ),
+    # Chord((KC.N, KC.M), KC.DEL ),
+    Chord((KC.H, KC.N), KC.DEL ),
+    
+    # Chord((L1, R2), KC.ESC), 
+    # Chord((L1, R2), KC.BSPC), 
+
+    Chord((L2, R1), KC.DEL),
+    
+    Chord((KC.N0, KC.F10), KC.DOT),
+
+]
+
+
+
+if __name__ == '__main__': 
+    keyboard.go()
+
+

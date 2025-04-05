@@ -3,13 +3,17 @@
 #include <dt-bindings/zmk/bt.h>
 
 
+
+#define R3  DEL
+
+
 / {
 	behaviors {
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <220>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
@@ -31,22 +35,41 @@
         default_layer {
 		bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  ALT/Q   │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │ P        │
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼────── ───┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ;        │
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ SHFT/Z   │  X       │  C       │  V       │  B       │   │  N       │  M       │ ,        │ .        │ SHFT / / │
+        //│ SHFT/Z   │  X       │  C       │  V       │  B       │   │  N       │  M       │ ,        │ .        │ /        │
         //╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-        //                      | CTRL/ESC |  L1/TAB  | SPACE    |   | ENTER    | L2/BSPC  | ALT/DEL  |
+        //                      |   ESC    | L1/CTRL  | L2/SPAC  |   | L2/ENTER | L2/BSPC  |   DEL    |
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
-            &kp Q      &kp W      &kp E      	 &kp R      &kp T          &kp Y      &kp U       &kp I      &kp O      &kp P
-            &kp A      &kp S      &kp D      	 &kp F      &kp G          &kp H      &kp J       &kp K      &kp L      &kp SEMI 
-            &ht LSFT Z &kp X      &kp C      	 &kp V      &kp B          &kp N      &kp M       &kp CMMA   &kp DOT    &ht LSFT FSLH
-                                  &ht LCTRL ESC  &lt 1 TAB  &kp SPACE      &kp ENTER  &lt 2 BSPC  &ht LALT DEL
+            &ht LALT Q &kp W      &kp E      &kp R         &kp T          &kp Y        &kp U       &kp I      &kp O      &kp P
+            &kp A      &kp S      &kp D      &kp F         &kp G          &kp H        &kp J       &kp K      &kp L      &kp SEMI 
+            &ht LSFT Z &kp X      &kp C      &kp V         &kp B          &kp N        &kp M       &kp CMMA   &kp DOT    &kp FSLH
+                       ESC        &lt 1 &sk LCTRL    &lt 2 SPACE          &lt 2 ENTER  &lt 1 BSPC  DEL  
             >;
 		};
 
 
+		navi_layer {
+			bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │          │          │          │          │   │          │    UP    │          │   HOME   │  PG UP   │
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │   │   LEFT   │   DOWN   │   RIGHT  │   END    │  PG DW   │
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │   │          │          │          │          │          │
+        //╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
+        //                      |     "    |     "    |     "    |   |     "    |     "    |     "    |
+        //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+
+
+			&none 		&none 		&none 		&none 		&none 		&none 		&kp UP 		&none 	    &kp HOME    &kp PG_UP
+			&none 		&none 		&none 		&none 		&none 		&kp LEFT    &kp DOWN	&kp RIGHT 	&kp END     &kp PG_DN
+            &none 		&none 		&none 		&none 		&none 		&none  		&none       &none 		&none 		&none 
+									&trans     	&trans     	&trans 		&trans     	&trans    	&trans 
+			>;
+		};
 		number_layer {
 			bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
@@ -63,27 +86,7 @@
 			&kp F1 		&kp F2 		&kp F3		&kp F4 		&kp F5    	&kp F6 		&kp F7 		&kp F8 		&kp F9 		&kp F10 
 			&kp N1 		&kp N2		&kp N3 		&kp N4 		&kp N5 		&kp N6 		&kp N7 		&kp N8 		&kp N9 		&kp N0 
             &kp EXCL   	&kp AT		&kp HASH   	&kp DLLR   	&kp PRCNT   &kp CARET  	&kp AMPS  	&kp STAR  	&kp PLUS   	&kp MINUS
-									&trans     	&trans     	&trans   	&kp DOT    	&trans    	&trans 
-			>;
-		};
-
-		navi_layer {
-			bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │   │   PG UP  │          │   UP     │          │   PG DW  │
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │   HOME   │   LEFT   │   DOWN   │   RIGHT  │   END    │
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │          │          │          │          │          │
-        //╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-        //                      |     "    |     "    |     "    |   |     "    |     "    |     "    |
-        //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
-
-
-			&none 		&none 		&none 		&none 		&none 		&kp PG_UP   &none 		&kp UP 		&none 	    &kp PG_DN
-			&none 		&none 		&none 		&none 		&none 		&kp HOME    &kp LEFT    &kp DOWN	&kp RIGHT 	&kp END
-            &none 		&none 		&none 		&none 		&none 		&none  		&none       &none 		&none 		&none 
-									&trans     	&trans     	&trans 		&trans     	&trans    	&trans 
+									&trans     	&trans     	&trans   	&trans    	&trans    	&trans
 			>;
 		};
 
