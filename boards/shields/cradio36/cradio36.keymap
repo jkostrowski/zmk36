@@ -2,11 +2,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-
-
-#define R3  DEL
-
-
 / {
 	behaviors {
         ht: hold_tap {
@@ -43,10 +38,12 @@
         //╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
         //                      |   ESC    | L1/CTRL  | L2/SPAC  |   | L2/ENTER | L2/BSPC  |   DEL    |
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+
             &ht LALT Q &kp W      &kp E      &kp R         &kp T          &kp Y        &kp U       &kp I      &kp O      &kp P
             &kp A      &kp S      &kp D      &kp F         &kp G          &kp H        &kp J       &kp K      &kp L      &kp SEMI 
             &ht LSFT Z &kp X      &kp C      &kp V         &kp B          &kp N        &kp M       &kp CMMA   &kp DOT    &kp FSLH
-                       ESC        &lt 1 &sk LCTRL    &lt 2 SPACE          &lt 2 ENTER  &lt 1 BSPC  DEL  
+                       &kp ESC    &lt 1 &sk LCTRL   &lt 2 SPACE           &lt 2 ENTER  &lt 1 BSPC  &kp DEL  
+
             >;
 		};
 
@@ -63,13 +60,14 @@
         //                      |     "    |     "    |     "    |   |     "    |     "    |     "    |
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 
-
 			&none 		&none 		&none 		&none 		&none 		&none 		&kp UP 		&none 	    &kp HOME    &kp PG_UP
 			&none 		&none 		&none 		&none 		&none 		&kp LEFT    &kp DOWN	&kp RIGHT 	&kp END     &kp PG_DN
             &none 		&none 		&none 		&none 		&none 		&none  		&none       &none 		&none 		&none 
 									&trans     	&trans     	&trans 		&trans     	&trans    	&trans 
+
 			>;
 		};
+        
 		number_layer {
 			bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
@@ -82,11 +80,11 @@
         //                      |     "    |     "    |     "    |   |     .    |     "    |     "    |
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 
-
 			&kp F1 		&kp F2 		&kp F3		&kp F4 		&kp F5    	&kp F6 		&kp F7 		&kp F8 		&kp F9 		&kp F10 
 			&kp N1 		&kp N2		&kp N3 		&kp N4 		&kp N5 		&kp N6 		&kp N7 		&kp N8 		&kp N9 		&kp N0 
             &kp EXCL   	&kp AT		&kp HASH   	&kp DLLR   	&kp PRCNT   &kp CARET  	&kp AMPS  	&kp STAR  	&kp PLUS   	&kp MINUS
 									&trans     	&trans     	&trans   	&trans    	&trans    	&trans
+
 			>;
 		};
 
@@ -103,11 +101,11 @@
         //                      |     "    |     "    |     "    |   |     "    |     "    |     "    |
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 
-
 			&sys_reset 	&none 	&none 		&none 		&bt BT_SEL 0 		&none  		&none       &none 		&none 		&none 
 			&bootloader	&none 	&none 		&bt BT_CLR  &bt BT_SEL 1		&none  		&none       &none 		&none 		&none 
             &none 		&none   &none 		&none 	    &bt BT_SEL 2 		&none  		&none       &none 		&none 		&none 
 								&trans     	&trans     	&trans 				&trans     	&trans    	&trans 
+
 			>;
 		};
 
